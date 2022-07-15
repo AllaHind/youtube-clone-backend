@@ -1,0 +1,3 @@
+[submodule "youtube-clone-frontEnd"]
+	path = youtube-clone-frontEnd
+	url = https://github.com/AllaHind/youtube-clone-frontEnd.git
