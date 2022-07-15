@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/videos")
+@CrossOrigin("*")
 @RequiredArgsConstructor
 public class VideoController {
 
