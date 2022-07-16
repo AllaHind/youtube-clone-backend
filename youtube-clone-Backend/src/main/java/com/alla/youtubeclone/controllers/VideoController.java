@@ -1,5 +1,6 @@
 package com.alla.youtubeclone.controllers;
 
+import com.alla.youtubeclone.dto.VideoDto;
 import com.alla.youtubeclone.services.VideoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,20 @@ public class VideoController {
     private final VideoService videoService;
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void uploadVideo(@RequestParam("file") MultipartFile file)
+    public String uploadVideo(@RequestParam("file") MultipartFile file)
     {
-          videoService.uploadVideo(file);
+       return   videoService.uploadVideo(file);
+    }
+    @PutMapping
+    @ResponseStatus(HttpStatus.OK)
+    public VideoDto editVideoMetaData(@RequestBody VideoDto videodto){
+        return videoService.editVideo(videodto);
     }
 
+    @PostMapping("/Thumbnail")
+    @ResponseStatus(HttpStatus.OK)
+    public String uploadThumbnail(@RequestParam("file") MultipartFile file,String videoId)
+    {
+        return  videoService.uploadThumbnail(file,videoId);
+    }
 }
